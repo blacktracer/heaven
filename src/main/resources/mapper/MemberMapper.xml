@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.virgin.heaven.mapper.MemberMapper">
+    <select id="getMember" resultType="com.virgin.heaven.bean.vo.MemberVo">
+      SELECT memberPhone,memberName,createTime FROM member x WHERE x.id=1
+    </select>
+    <insert id="addMember">
+      INSERT INTO member(memberPhone) VALUES('1')
+    </insert>
+</mapper>
