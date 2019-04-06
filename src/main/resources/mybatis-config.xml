@@ -15,4 +15,7 @@
    <!-- <mappers>
         <mapper resource="mapper/MemberMapper.xml"></mapper>
     </mappers>-->
+   <!--<settings>
+      <setting name="logImpl" value="LOG4J"/>
+   </settings>-->
 </configuration>

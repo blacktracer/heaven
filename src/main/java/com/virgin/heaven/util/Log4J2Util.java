@@ -7,5 +7,6 @@ public class Log4J2Util {
     private static Logger logger = LogManager.getLogger(Log4J2Util.class);
     public static void main(String[] args) {
         logger.info("Hello World");
+        Log4j2Sample.p();
     }
 }
