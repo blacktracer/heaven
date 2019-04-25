@@ -15,5 +15,6 @@
         </Root>
         <Logger name="org.apache.ibatis" level="DEBUG"></Logger>
         <Logger name="org.mybatis.spring" level="DEBUG"></Logger>
+        <Logger name="com.virgin.heaven.mapper" level="DEBUG"></Logger>
     </Loggers>
 </Configuration>

@@ -3,8 +3,11 @@ package com.virgin.heaven.config;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.mybatis.spring.SqlSessionFactoryBean;
 import org.mybatis.spring.annotation.MapperScan;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.PropertySource;
+import org.springframework.core.env.Environment;
 import org.springframework.core.io.support.PathMatchingResourcePatternResolver;
 import org.springframework.jdbc.datasource.DataSourceTransactionManager;
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
@@ -15,7 +18,10 @@ import javax.sql.DataSource;
 @Configuration
 @EnableTransactionManagement
 @MapperScan({"com.virgin.heaven.mapper"})
-public class DataConfigurer {
+@PropertySource("classpath:application.properties")
+public class DataConfig {
+    @Autowired
+    private Environment environment;
 
     /**
      * 数据源配置
@@ -24,13 +30,10 @@ public class DataConfigurer {
     @Bean
     public DataSource dataSource(){
         DriverManagerDataSource driverManagerDataSource = new DriverManagerDataSource();
-        driverManagerDataSource.setDriverClassName("com.mysql.jdbc.Driver");
-        /*driverManagerDataSource.setUrl("jdbc:mysql://10.10.13.158:3306/weyou");
-        driverManagerDataSource.setUsername("hnuser");
-        driverManagerDataSource.setPassword("zhong#123");*/
-        driverManagerDataSource.setUrl("jdbc:mysql://192.168.75.128:3306/heaven");
-        driverManagerDataSource.setUsername("root");
-        driverManagerDataSource.setPassword("MyNewPass4!");
+        driverManagerDataSource.setDriverClassName(environment.getProperty("datasource.driverClassName"));
+        driverManagerDataSource.setUrl(environment.getProperty("datasource.url"));
+        driverManagerDataSource.setUsername(environment.getProperty("datasource.username"));
+        driverManagerDataSource.setPassword(environment.getProperty("datasource.password"));
         return driverManagerDataSource;
     }
 
